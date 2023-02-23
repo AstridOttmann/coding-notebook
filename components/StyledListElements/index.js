@@ -5,6 +5,13 @@ const StyledList = styled.ul`
   padding: 0;
 
   ${({ variant }) => {
+    if (variant === "listitem") {
+      return css`
+        background-color: #444444;
+        border-radius: 20px;
+        padding: 1rem;
+      `;
+    }
     if (variant === "tags") {
       return css`
         display: flex;

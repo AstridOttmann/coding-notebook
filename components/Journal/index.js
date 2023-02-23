@@ -12,9 +12,9 @@ export default function Journal() {
       <h1>Journal</h1>
       {notes.map((note) => (
         <>
-          <StyledList key={note.id}>
+          <StyledList variant="listitem" key={note.id}>
             <li>
-              <date>{note.date}</date>
+              <time>{note.date}</time>
               <h2>{note.topic}</h2>
               <p>Notes: {note.notes}</p>
               <p>Challenges: {note.challenges}</p>
