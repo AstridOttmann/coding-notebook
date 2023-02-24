@@ -1,5 +1,6 @@
 import styled from "styled-components";
-import StyledButton from "../Button";
+import Button from "../Button";
+import SVGIcon from "../Icons/SVGIcon";
 
 export default function NotesForm({ onSubmit }) {
   return (
@@ -18,7 +19,9 @@ export default function NotesForm({ onSubmit }) {
         <StyledInput id="challenges" name="challenges" />
         <label htmlFor="tags">tags</label>
         <StyledInput id="tags" name="tags" />
-        <StyledButton type="submit">add</StyledButton>
+        <Button variant="" type="submit">
+          <SVGIcon variant="yes" width="2.5rem" />
+        </Button>
       </StyledForm>
     </div>
   );
@@ -33,6 +36,6 @@ const StyledForm = styled.form`
 `;
 const StyledInput = styled.input`
   border-radius: 5px;
-  background-color: var(--font-color);
+  background-color: var(--background-color);
   padding: 0.3rem;
 `;

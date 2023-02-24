@@ -1,8 +1,9 @@
 import styled, { css } from "styled-components";
 
-const StyledList = styled.ul`
+export const StyledList = styled.ul`
   list-style: none;
   padding: 0;
+  position: relative;
 
   ${({ variant }) => {
     if (variant === "listitem") {
@@ -20,4 +21,7 @@ const StyledList = styled.ul`
     }
   }}
 `;
-export default StyledList;
+
+export const StyledTitle = styled.h1`
+  text-align: center;
+`;
