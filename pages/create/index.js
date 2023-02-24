@@ -38,7 +38,7 @@ export default function CreatePage() {
 
   return (
     <>
-      <Button variant="link" href="/">
+      <Button type="button" href="/">
         <SVGIcon variant="go_back" width="2.5rem" />
       </Button>
       <NotesForm onSubmit={handleSubmit} />
