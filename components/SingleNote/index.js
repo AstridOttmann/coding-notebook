@@ -1,4 +1,4 @@
-import StyledList from "../StyledListElements";
+import { StyledList } from "../StyledListElements";
 import { useRouter } from "next/router";
 import useSWR from "swr";
 import styled from "styled-components";
