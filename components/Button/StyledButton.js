@@ -16,12 +16,14 @@ const StyledButton = styled.button`
         margin-bottom: 1rem;
       `;
     }
-    // if (variant === "back") {
-    //   return css`
-    //     border: none;
-    //     width: fit-content;
-    //   `;
-    // }
+    if (variant === "text") {
+      return css`
+        border: none;
+        width: fit-content;
+        padding: 0;
+        margin: 0;
+      `;
+    }
     if (variant === "more") {
       return css`
         position: absolute;

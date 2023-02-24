@@ -8,6 +8,7 @@ import Button from "@/components/Button";
 import Link from "next/link";
 import SVGIcon from "../Icons/SVGIcon";
 import styled from "styled-components";
+import NoteLinkComponent from "../NoteLinkComponent";
 
 export default function Journal() {
   //  const [notes, setNotes] = useState(sessionNotes);
@@ -31,9 +32,9 @@ export default function Journal() {
             <time>{note.date}</time>
             <h2>{note.topic}</h2>
             <p>Description: {note.description}</p>
-            <p>Link: {note.link}</p>
-            <p>Challenges: {note.challenges}</p>
-            <StyledDivider />
+            <NoteLinkComponent text="Link: " href={note.link} />
+            <NoteLinkComponent text="Challenges: " href={note.challenges} />
+            <StyledDivider variant="note" />
             <StyledList variant="tags">
               {note.tags.map((tag) => (
                 <li key={tag}>{tag}</li>
