@@ -1,10 +1,11 @@
-import styled, { css } from "styled-components";
 import { useState } from "react";
 import sessionNotes from "@/data";
 import StyledDivider from "../Divider/StyledDivider";
 import StyledList from "../StyledListElements";
 import { useRouter } from "next/router";
 import useSWR from "swr";
+import Button from "@/components/Button";
+import Link from "next/link";
 
 export default function Journal() {
   //  const [notes, setNotes] = useState(sessionNotes);
@@ -17,9 +18,14 @@ export default function Journal() {
 
   return (
     <div>
-      <h1>Journal</h1>
-      {data.map((note) => (
-        <>
+      <div>
+        <h1>Journal</h1>
+        <Button>
+          <Link href="/create">add note</Link>
+        </Button>
+      </div>
+      <div>
+        {data.map((note) => (
           <StyledList variant="listitem" key={note._id}>
             <li>
               <time>{note.date}</time>
@@ -35,8 +41,8 @@ export default function Journal() {
               <StyledDivider></StyledDivider>
             </li>
           </StyledList>
-        </>
-      ))}
+        ))}
+      </div>
     </div>
   );
 }

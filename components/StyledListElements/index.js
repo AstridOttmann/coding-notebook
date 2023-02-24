@@ -7,7 +7,7 @@ const StyledList = styled.ul`
   ${({ variant }) => {
     if (variant === "listitem") {
       return css`
-        background-color: #444444;
+        background-color: var(--light-background);
         border-radius: 20px;
         padding: 1rem;
       `;
