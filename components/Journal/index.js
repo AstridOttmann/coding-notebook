@@ -33,12 +33,15 @@ export default function Journal() {
               <p>Description: {note.description}</p>
               <p>Link: {note.link}</p>
               <p>Challenges: {note.challenges}</p>
+              <StyledDivider></StyledDivider>
               <StyledList variant="tags">
                 {note.tags.map((tag) => (
                   <li key={tag}>{tag}</li>
                 ))}
               </StyledList>
-              <StyledDivider></StyledDivider>
+              <Button>
+                <Link href={`${note._id}`}> ... </Link>
+              </Button>
             </li>
           </StyledList>
         ))}
