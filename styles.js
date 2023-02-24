@@ -9,8 +9,10 @@ export default createGlobalStyle`
 
   :root{
     --background-color: #000000;
+    --light-background: #444444;
     --font-color: #eb6f66;
     --font-size: 20px;
+    --button-color: #ffe4e1;
    }
 
   body {

@@ -1,22 +1,37 @@
-import styled, { css } from "styled-components";
 import { useState } from "react";
 import sessionNotes from "@/data";
 import StyledDivider from "../Divider/StyledDivider";
 import StyledList from "../StyledListElements";
+import { useRouter } from "next/router";
+import useSWR from "swr";
+import Button from "@/components/Button";
+import Link from "next/link";
 
 export default function Journal() {
-  const [notes, setNotes] = useState(sessionNotes);
+  //  const [notes, setNotes] = useState(sessionNotes);
+  const router = useRouter();
+  const { data } = useSWR("api/notes");
+  console.log("data", data);
+  if (!data) {
+    return <h1>Loading...</h1>;
+  }
 
   return (
     <div>
-      <h1>Journal</h1>
-      {notes.map((note) => (
-        <>
-          <StyledList variant="listitem" key={note.id}>
+      <div>
+        <h1>Journal</h1>
+        <Button>
+          <Link href="/create">add note</Link>
+        </Button>
+      </div>
+      <div>
+        {data.map((note) => (
+          <StyledList variant="listitem" key={note._id}>
             <li>
               <time>{note.date}</time>
               <h2>{note.topic}</h2>
-              <p>Notes: {note.notes}</p>
+              <p>Description: {note.description}</p>
+              <p>Link: {note.link}</p>
               <p>Challenges: {note.challenges}</p>
               <StyledList variant="tags">
                 {note.tags.map((tag) => (
@@ -26,8 +41,8 @@ export default function Journal() {
               <StyledDivider></StyledDivider>
             </li>
           </StyledList>
-        </>
-      ))}
+        ))}
+      </div>
     </div>
   );
 }
