@@ -41,9 +41,14 @@ export default function SingleNote() {
             <li key={tag}>{tag}</li>
           ))}
         </StyledList>
-        <Button variant="bin" type="button" onClick={() => setPopUp(true)}>
-          <SVGIcon variant="bin" width="2rem" />
-        </Button>
+        <StyledButtonWrapper>
+          <Button type="button" href={`/${id}/edit`}>
+            <SVGIcon variant="pencil" width="2rem" />
+          </Button>
+          <Button type="button" onClick={() => setPopUp(true)}>
+            <SVGIcon variant="bin" width="2rem" />
+          </Button>
+        </StyledButtonWrapper>
       </StyledSingleNoteContainer>
       {popUp && (
         <StyledPopUpContainer>
@@ -74,4 +79,9 @@ const StyledSingleNoteContainer = styled.article`
 
 const StyledPopUpContainer = styled.div`
   text-align: center;
+`;
+const StyledButtonWrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 `;

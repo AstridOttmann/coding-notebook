@@ -16,18 +16,17 @@ const StyledButton = styled.button`
         margin-bottom: 1rem;
       `;
     }
-    if (variant === "bin") {
-      return css`
-        border: none;
-        position: absolute;
-        right: 1rem;
-        bottom: 1rem;
-      `;
-    }
+    // if (variant === "back") {
+    //   return css`
+    //     border: none;
+    //     width: fit-content;
+    //   `;
+    // }
     if (variant === "more") {
       return css`
         position: absolute;
-        right: 1rem;
+        margin: 0;
+        right: 0.5rem;
         bottom: 0.2rem;
       `;
     }

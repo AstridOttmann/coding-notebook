@@ -6,7 +6,7 @@ import SVGIcon from "@/components/Icons/SVGIcon";
 export default function NoteDetails() {
   return (
     <>
-      <Button variant="link" href="/">
+      <Button type="button" href="/">
         <SVGIcon variant="go_back" width="2.5rem" />
       </Button>
       <SingleNote />

@@ -2,23 +2,47 @@ import styled from "styled-components";
 import Button from "../Button";
 import SVGIcon from "../Icons/SVGIcon";
 
-export default function NotesForm({ onSubmit }) {
+export default function NotesForm({ onSubmit, isEditMode, note }) {
   return (
     <div>
-      <h1>Add note</h1>
+      <h1>{isEditMode ? "Edit note" : "Add note"}</h1>
       <StyledForm onSubmit={onSubmit}>
         <label htmlFor="date">Date</label>
-        <StyledInput id="date" name="date" />
+        <StyledInput
+          id="date"
+          name="date"
+          defaultValue={isEditMode ? note.date : ""}
+        />
         <label htmlFor="topic">Topic</label>
-        <StyledInput id="topic" name="topic" />
+        <StyledInput
+          id="topic"
+          name="topic"
+          defaultValue={isEditMode ? note.topic : ""}
+        />
         <label htmlFor="description">Description</label>
-        <StyledInput id="description" name="description" />
+        <StyledInput
+          id="description"
+          name="description"
+          defaultValue={isEditMode ? note.description : ""}
+        />
         <label htmlFor="link">Link</label>
-        <StyledInput id="link" name="link" />
+        <StyledInput
+          id="link"
+          name="link"
+          defaultValue={isEditMode ? note.link : ""}
+        />
         <label htmlFor="challenges">Challenges</label>
-        <StyledInput id="challenges" name="challenges" />
+        <StyledInput
+          id="challenges"
+          name="challenges"
+          defaultValue={isEditMode ? note.challenges : ""}
+        />
         <label htmlFor="tags">tags</label>
-        <StyledInput id="tags" name="tags" />
+        <StyledInput
+          id="tags"
+          name="tags"
+          defaultValue={isEditMode ? note.tags : ""}
+        />
         <Button variant="" type="submit">
           <SVGIcon variant="yes" width="2.5rem" />
         </Button>
@@ -37,5 +61,6 @@ const StyledForm = styled.form`
 const StyledInput = styled.input`
   border-radius: 5px;
   background-color: var(--background-color);
+  color: var(--font-color);
   padding: 0.3rem;
 `;

@@ -15,6 +15,11 @@ export default async function handler(request, response) {
     return response.status(200).json(note);
   }
 
+  if (request.method === "PATCH") {
+    const editNote = await Note.findByIdAndUpdate(id, { $set: request.body });
+    return response.status(200).json({ status: "Note edited" });
+  }
+
   if (request.method === "DELETE") {
     const deletedNote = await Note.findByIdAndDelete(id);
     return response.status(200).json({ status: "Note deleted" });
