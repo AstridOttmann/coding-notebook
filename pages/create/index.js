@@ -3,6 +3,7 @@ import NotesForm from "@/components/NotesForm";
 import useSWR from "swr";
 import Link from "next/link";
 import Button from "@/components/Button";
+import SVGIcon from "@/components/Icons/SVGIcon";
 
 export default function CreatePage() {
   const router = useRouter();
@@ -37,8 +38,8 @@ export default function CreatePage() {
 
   return (
     <>
-      <Button>
-        <Link href="/">go back</Link>
+      <Button variant="link" href="/">
+        <SVGIcon variant="go_back" width="2.5rem" />
       </Button>
       <NotesForm onSubmit={handleSubmit} />
     </>
