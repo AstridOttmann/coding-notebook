@@ -6,6 +6,9 @@ import StyledDivider from "../Divider/StyledDivider";
 import Button from "../Button";
 import SVGIcon from "../Icons/SVGIcon";
 import { useState } from "react";
+import Link from "next/link";
+import NoteLinkComponent from "../NoteLinkComponent";
+import { StyledButtonWrapper } from "../StyledNoteElements";
 
 export default function SingleNote() {
   const [popUp, setPopUp] = useState(false);
@@ -34,8 +37,9 @@ export default function SingleNote() {
         <time>{data.date}</time>
         <h2>{data.topic}</h2>
         <p>Description: {data.description}</p>
-        <p>Link: {data.link}</p>
-        <p>Challenges: {data.challenges}</p> <StyledDivider />
+        <NoteLinkComponent text="Link: " href={data.link} />
+        <NoteLinkComponent text="Challenges: " href={data.challenges} />
+        <StyledDivider variant="note" />
         <StyledList variant="tags">
           {data.tags.map((tag) => (
             <li key={tag}>{tag}</li>
@@ -80,8 +84,8 @@ const StyledSingleNoteContainer = styled.article`
 const StyledPopUpContainer = styled.div`
   text-align: center;
 `;
-const StyledButtonWrapper = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-`;
+// const StyledButtonWrapper = styled.div`
+//   display: flex;
+//   justify-content: space-between;
+//   align-items: center;
+// `;
