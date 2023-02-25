@@ -14,12 +14,11 @@ export default function CreatePage() {
 
     const formData = new FormData(event.target);
     const noteData = Object.fromEntries(formData);
-    const date = new Date();
 
     try {
       const response = await fetch("/api/notes", {
         method: "POST",
-        body: JSON.stringify({ date, ...noteData }),
+        body: JSON.stringify(noteData),
         headers: {
           "Content-Type": "application/json",
         },
