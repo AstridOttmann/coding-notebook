@@ -11,8 +11,8 @@ export default async function handler(request, response) {
 
   if (request.method === "POST") {
     try {
-      const noteData = request.body;
-      const note = new Note(noteData);
+      const { date, ...noteData } = request.body;
+      const note = new Note({ date, ...noteData });
       await note.save();
 
       return response.status(201).json({ status: "note created" });

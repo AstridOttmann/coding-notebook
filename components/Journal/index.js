@@ -15,6 +15,11 @@ export default function Journal() {
   const router = useRouter();
   const { data } = useSWR("api/notes");
   console.log("data", data);
+
+  // data.sort(
+  //   (a, b) => new Date(a.date.split("-")) - new Date(b.date.split("-"))
+  // );
+
   if (!data) {
     return <h1>Loading...</h1>;
   }

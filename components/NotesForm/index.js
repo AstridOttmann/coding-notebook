@@ -8,16 +8,23 @@ export default function NotesForm({ onSubmit, isEditMode, note }) {
       <h1>{isEditMode ? "Edit note" : "Add note"}</h1>
       <StyledForm onSubmit={onSubmit}>
         <label htmlFor="date">Date</label>
-        <StyledInput
-          id="date"
-          name="date"
-          defaultValue={isEditMode ? note.date : ""}
-        />
+        {isEditMode ? (
+          <StyledInput id="date" name="date" defaultValue={note.date} />
+        ) : (
+          <StyledInputDate
+            id="date"
+            name="date"
+            type="date"
+            min="2020-01-01"
+            max="2030-12-31"
+          />
+        )}
+
         <label htmlFor="topic">Topic</label>
         <StyledInput
           id="topic"
           name="topic"
-          defaultValue={isEditMode ? note.topic : ""}
+          defaultValue={isEditMode ? note.topic : null}
         />
         <label htmlFor="description">Description</label>
         <StyledInput
@@ -63,4 +70,7 @@ const StyledInput = styled.input`
   background-color: var(--background-color);
   color: var(--font-color);
   padding: 0.3rem;
+`;
+const StyledInputDate = styled.input`
+  background-color: var(--button-color);
 `;
