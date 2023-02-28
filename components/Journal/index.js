@@ -14,43 +14,51 @@ export default function Journal() {
   //  const [notes, setNotes] = useState(sessionNotes);
   const router = useRouter();
   const { data } = useSWR("api/notes");
-  console.log("data", data);
+  console.log("data_Journal", data);
 
   // data.sort(
   //   (a, b) => new Date(a.date.split("-")) - new Date(b.date.split("-"))
   // );
-
   if (!data) {
     return <h1>Loading...</h1>;
   }
 
-  return (
-    <>
-      <StyledTitle>Journal</StyledTitle>
-      <Button variant="plus" href="/create">
-        <SVGIcon variant="plus" width="2.5rem" />
-      </Button>
+  if (data) {
+    const notes = [...data].reverse();
 
-      {data.map((note) => (
-        <StyledList variant="listitem" key={note._id}>
-          <li>
-            <time>{note.date}</time>
-            <h2>{note.topic}</h2>
-            <p>Description: {note.description}</p>
-            <NoteLinkComponent text="Link: " href={note.link} />
-            <NoteLinkComponent text="Challenges: " href={note.challenges} />
-            <StyledDivider variant="note" />
-            <StyledList variant="tags">
-              {note.tags.map((tag) => (
-                <li key={tag}>{tag}</li>
-              ))}
-            </StyledList>
-            <Button variant="more" href={`${note._id}`}>
-              <SVGIcon variant="more" width="3rem" />
-            </Button>
-          </li>
-        </StyledList>
-      ))}
-    </>
-  );
+    notes.sort(
+      (a, b) => new Date(b.date.split("-")) - new Date(a.date.split("-"))
+    );
+    console.log("notes_sorted", notes);
+
+    return (
+      <>
+        <StyledTitle>Journal</StyledTitle>
+        <Button variant="plus" href="/create">
+          <SVGIcon variant="plus" width="2.5rem" />
+        </Button>
+
+        {notes.map((note) => (
+          <StyledList variant="listitem" key={note._id}>
+            <li>
+              <time>{note.date}</time>
+              <h2>{note.topic}</h2>
+              <p>Description: {note.description}</p>
+              <NoteLinkComponent text="Link: " href={note.link} />
+              <NoteLinkComponent text="Challenges: " href={note.challenges} />
+              <StyledDivider variant="note" />
+              <StyledList variant="tags">
+                {note.tags.map((tag) => (
+                  <li key={tag}>{tag}</li>
+                ))}
+              </StyledList>
+              <Button variant="more" href={`${note._id}`}>
+                <SVGIcon variant="more" width="3rem" />
+              </Button>
+            </li>
+          </StyledList>
+        ))}
+      </>
+    );
+  }
 }
