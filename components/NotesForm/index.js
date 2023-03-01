@@ -1,6 +1,10 @@
-import styled from "styled-components";
 import Button from "../Button";
 import SVGIcon from "../Icons/SVGIcon";
+import {
+  StyledForm,
+  StyledInput,
+  StyledInputDate,
+} from "../StyledFormElements";
 
 export default function NotesForm({ onSubmit, isEditMode, note }) {
   return (
@@ -57,20 +61,3 @@ export default function NotesForm({ onSubmit, isEditMode, note }) {
     </div>
   );
 }
-const StyledForm = styled.form`
-  display: flex;
-  flex-direction: column;
-  gap: 0.57em;
-  padding: 1rem;
-  background-color: var(--light-background);
-  border-radius: 20px;
-`;
-const StyledInput = styled.input`
-  border-radius: 5px;
-  background-color: var(--background-color);
-  color: var(--font-color);
-  padding: 0.3rem;
-`;
-const StyledInputDate = styled.input`
-  background-color: var(--button-color);
-`;
